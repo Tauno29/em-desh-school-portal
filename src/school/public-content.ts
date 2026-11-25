@@ -1,3 +1,4 @@
+export const LOVABLE_ORIGIN = "https://project--cf4a80e7-8301-450b-b19f-d5fb82508f21.lovable.app";
 // Only these already-public school reads may be exposed to external hosts.
 const PUBLIC_CONTENT = new Set(["homepage", "gallery"]);
 
@@ -21,6 +22,6 @@ export function publicMediaPath(splat: string): string | null {
 export function stabilizeMediaUrls(json: string): string {
   return json.replace(/https?:\/\/[^"]*\/storage\/v1\/object\/sign\/gallery\/([^"?]+)\?[^"]*/g, (all, path: string) => {
     const decoded = decodeURIComponent(path);
-    return publicMediaPath("media/" + decoded) ? "/school-api/media/" + decoded : all;
+    return publicMediaPath("media/" + decoded) ? LOVABLE_ORIGIN + "/api/public/school/media/" + decoded : all;
   });
 }

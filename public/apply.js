@@ -128,7 +128,7 @@ form.addEventListener('submit', async (event) => {
     data.append('website', form.elements.website.value);
     data.append('entries', JSON.stringify(entries));
     data.append('photo', file);
-    const res = await fetch('/api/application', { method: 'POST', body: data });
+    const res = await fetch((/lovable\.app$|localhost/.test(location.hostname) ? '' : 'https://project--cf4a80e7-8301-450b-b19f-d5fb82508f21.lovable.app/api/public') + (/lovable\.app$|localhost/.test(location.hostname) ? '/api/application' : '/application'), { method: 'POST', body: data });
     const result = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(ERRORS[result.error] || 'Your application could not be sent. Please try again.');
 

@@ -32,7 +32,7 @@ describe("Public media", () => {
   it("rewrites signed links but leaves application photos alone", () => {
     const json = '{"a":"https://x.cloud/storage/v1/object/sign/gallery/homepage/v1?token=t","b":"https://x.cloud/storage/v1/object/sign/gallery/applications/p?token=t"}';
     const out = JSON.parse(stabilizeMediaUrls(json));
-    expect(out.a).toBe("/school-api/media/homepage/v1");
+    expect(out.a).toBe("https://project--cf4a80e7-8301-450b-b19f-d5fb82508f21.lovable.app/api/public/school/media/homepage/v1");
     expect(out.b).toContain("token=t");
   });
 });

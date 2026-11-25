@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiApplicationRouteImport } from './routes/api/application'
 import { Route as SchoolApiSplatRouteImport } from './routes/school-api/$'
+import { Route as ApiPublicApplicationRouteImport } from './routes/api/public/application'
 import { Route as DotnetlifyFunctionsAppSplatRouteImport } from './routes/[.]netlify/functions/app/$'
 import { Route as ApiPublicSchoolSplatRouteImport } from './routes/api/public/school/$'
 
@@ -30,6 +31,11 @@ const SchoolApiSplatRoute = SchoolApiSplatRouteImport.update({
   path: '/school-api/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicApplicationRoute = ApiPublicApplicationRouteImport.update({
+  id: '/api/public/application',
+  path: '/api/public/application',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DotnetlifyFunctionsAppSplatRoute =
   DotnetlifyFunctionsAppSplatRouteImport.update({
     id: '/.netlify/functions/app/$',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/application': typeof ApiApplicationRoute
   '/school-api/$': typeof SchoolApiSplatRoute
+  '/api/public/application': typeof ApiPublicApplicationRoute
   '/.netlify/functions/app/$': typeof DotnetlifyFunctionsAppSplatRoute
   '/api/public/school/$': typeof ApiPublicSchoolSplatRoute
 }
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/application': typeof ApiApplicationRoute
   '/school-api/$': typeof SchoolApiSplatRoute
+  '/api/public/application': typeof ApiPublicApplicationRoute
   '/.netlify/functions/app/$': typeof DotnetlifyFunctionsAppSplatRoute
   '/api/public/school/$': typeof ApiPublicSchoolSplatRoute
 }
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/api/application': typeof ApiApplicationRoute
   '/school-api/$': typeof SchoolApiSplatRoute
+  '/api/public/application': typeof ApiPublicApplicationRoute
   '/.netlify/functions/app/$': typeof DotnetlifyFunctionsAppSplatRoute
   '/api/public/school/$': typeof ApiPublicSchoolSplatRoute
 }
@@ -70,6 +79,7 @@ export interface FileRouteTypes {
     | '/'
     | '/api/application'
     | '/school-api/$'
+    | '/api/public/application'
     | '/.netlify/functions/app/$'
     | '/api/public/school/$'
   fileRoutesByTo: FileRoutesByTo
@@ -77,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/api/application'
     | '/school-api/$'
+    | '/api/public/application'
     | '/.netlify/functions/app/$'
     | '/api/public/school/$'
   id:
@@ -84,6 +95,7 @@ export interface FileRouteTypes {
     | '/'
     | '/api/application'
     | '/school-api/$'
+    | '/api/public/application'
     | '/.netlify/functions/app/$'
     | '/api/public/school/$'
   fileRoutesById: FileRoutesById
@@ -92,6 +104,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiApplicationRoute: typeof ApiApplicationRoute
   SchoolApiSplatRoute: typeof SchoolApiSplatRoute
+  ApiPublicApplicationRoute: typeof ApiPublicApplicationRoute
   DotnetlifyFunctionsAppSplatRoute: typeof DotnetlifyFunctionsAppSplatRoute
   ApiPublicSchoolSplatRoute: typeof ApiPublicSchoolSplatRoute
 }
@@ -119,6 +132,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SchoolApiSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/application': {
+      id: '/api/public/application'
+      path: '/api/public/application'
+      fullPath: '/api/public/application'
+      preLoaderRoute: typeof ApiPublicApplicationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.netlify/functions/app/$': {
       id: '/.netlify/functions/app/$'
       path: '/.netlify/functions/app/$'
@@ -140,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiApplicationRoute: ApiApplicationRoute,
   SchoolApiSplatRoute: SchoolApiSplatRoute,
+  ApiPublicApplicationRoute: ApiPublicApplicationRoute,
   DotnetlifyFunctionsAppSplatRoute: DotnetlifyFunctionsAppSplatRoute,
   ApiPublicSchoolSplatRoute: ApiPublicSchoolSplatRoute,
 }

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://c--0c0ed38a-aee4-4bbd-bd85-2ec9b3543008-prod.lovable.cloud" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="styles.css?v=20261125f">
+  <link rel="stylesheet" href="styles.css?v=20261125n">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -55,7 +55,7 @@
           <li><a href="apply.html">Apply</a></li>
           <li><a href="#admissions">Admissions</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="admin.html">Staff</a></li>
+          <li><a href="admin.html" data-staff-link>Staff</a></li>
         </ul>
         <a class="btn btn-primary nav-call" href="apply.html">Apply now</a>
       </nav>
@@ -371,7 +371,7 @@
         <h2 class="footer-heading">Contact</h2>
         <p class="footer-line"><a href="tel:+264818922721">+264 81 892 2721</a></p>
         <p class="footer-line">Along the C41 road<br>Okahao, Omusati Region, Namibia</p>
-        <p class="footer-line"><a href="admin.html">Staff sign in</a></p>
+        <p class="footer-line"><a href="admin.html" data-staff-link>Staff sign in</a></p>
       </div>
     </div>
 
@@ -381,6 +381,7 @@
     </div>
   </footer>
 
-  <script src="app.js?v=20261125f" defer></script>
+  <script src="app.js?v=20261125n" defer></script>
+<script id="staff-link-fix">if(!/lovable\.app$|localhost/.test(location.hostname))document.querySelectorAll("[data-staff-link]").forEach(a=>a.href="https://em-desh-school-connect.lovable.app/admin.html");</script>
 </body>
 </html>
