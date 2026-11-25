@@ -3422,3 +3422,20 @@ select.input {
 @media (max-width: 760px) {
   .chooser-row, .form-grid, .form-grid-3 { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Fees page + prospectus extras */
+.fees-grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr))}
+.fee-card{background:#fff;border:1px solid #dbe4f3;border-radius:14px;padding:1.5rem}
+.fee-card h2{font-size:1.25rem;margin:0 0 1rem;color:#0f2a5c}
+.fee-card h2+p,.fee-list+h2{margin-top:1.25rem}
+.fee-table{width:100%;border-collapse:collapse}
+.fee-table th,.fee-table td{padding:.55rem 0;border-bottom:1px solid #e7edf7;text-align:left;font-weight:400;vertical-align:top}
+.fee-table td{text-align:right;font-weight:600;color:#1d4ed8;padding-left:1rem;white-space:nowrap}
+.fee-note{font-size:.92rem;color:#475569;margin:.75rem 0 0}
+.fee-list{margin:0;padding-left:1.1rem;line-height:1.7}
+.mvv{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));margin:1.5rem 0}
+.mvv div{border-left:3px solid #1d4ed8;padding:.25rem 0 .25rem 1rem}
+.mvv h3{font-size:1rem;margin:0 0 .3rem;color:#0f2a5c}.mvv p{margin:0}
+.highlights{list-style:none;padding:0;margin:2rem 0 0;display:grid;gap:.6rem 1.5rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr))}
+.highlights li{padding-left:1.4rem;position:relative}
+.highlights li::before{content:"";position:absolute;left:0;top:.55em;width:.55rem;height:.55rem;border-radius:50%;background:#1d4ed8}
