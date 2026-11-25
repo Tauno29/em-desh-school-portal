@@ -68,7 +68,14 @@
         homepageWelcomeVideo.src = data.welcomeVideo.url;
         homepageWelcomeVideo.load();
       }
-      newsItems = Array.isArray(data.news) ? data.news : [];
+      const allImages = Array.isArray(data.news) ? data.news : [];
+      const heroImage = allImages.find((item) => item.role === 'hero');
+      const heroSection = document.querySelector('.hero');
+      if (heroImage?.url && heroSection) {
+        heroSection.style.setProperty('--hero-bg-image', `url("${heroImage.url.replace(/"/g, '%22')}")`);
+        heroSection.classList.add('has-bg');
+      }
+      newsItems = allImages.filter((item) => item.role !== 'hero');
       if (newsItems.length) {
         homepageNews.hidden = false;
         homepageNewsControls.hidden = false;

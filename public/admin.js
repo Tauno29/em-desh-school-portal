@@ -1818,14 +1818,6 @@ photoForm.addEventListener('submit', async (event) => {
 
 const tabs = [
   {
-    button: document.getElementById('tab-btn-learners'),
-    panel: document.getElementById('tab-learners'),
-  },
-  {
-    button: document.getElementById('tab-btn-applications'),
-    panel: document.getElementById('tab-applications'),
-  },
-  {
     button: document.getElementById('tab-btn-homepage'),
     panel: document.getElementById('tab-homepage'),
   },

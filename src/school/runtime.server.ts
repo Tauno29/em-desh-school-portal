@@ -52,6 +52,11 @@ export async function handleSchoolApi(request: Request): Promise<Response> {
       return { removed: paths.length };
     },
   };
+  // Learner portal and the old short application form were retired; keep their endpoints closed.
+  const apiPath = new URL(request.url).pathname;
+  if (/\/api\/(portal\/|apply$)/.test(apiPath)) {
+    return new Response(JSON.stringify({ error: "not_found" }), { status: 404, headers: { "content-type": "application/json" } });
+  }
   const handle = application({ db, storage, BackendError, env: { get: (name: string) => process.env[name] } });
   try {
     return await handle({ request });

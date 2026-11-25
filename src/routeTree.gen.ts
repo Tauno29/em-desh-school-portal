@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiApplicationRouteImport } from './routes/api/application'
 import { Route as DotnetlifyFunctionsAppSplatRouteImport } from './routes/[.]netlify/functions/app/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiApplicationRoute = ApiApplicationRouteImport.update({
+  id: '/api/application',
+  path: '/api/application',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DotnetlifyFunctionsAppSplatRoute =
@@ -26,27 +32,31 @@ const DotnetlifyFunctionsAppSplatRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/application': typeof ApiApplicationRoute
   '/.netlify/functions/app/$': typeof DotnetlifyFunctionsAppSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/application': typeof ApiApplicationRoute
   '/.netlify/functions/app/$': typeof DotnetlifyFunctionsAppSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/application': typeof ApiApplicationRoute
   '/.netlify/functions/app/$': typeof DotnetlifyFunctionsAppSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/.netlify/functions/app/$'
+  fullPaths: '/' | '/api/application' | '/.netlify/functions/app/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/.netlify/functions/app/$'
-  id: '__root__' | '/' | '/.netlify/functions/app/$'
+  to: '/' | '/api/application' | '/.netlify/functions/app/$'
+  id: '__root__' | '/' | '/api/application' | '/.netlify/functions/app/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiApplicationRoute: typeof ApiApplicationRoute
   DotnetlifyFunctionsAppSplatRoute: typeof DotnetlifyFunctionsAppSplatRoute
 }
 
@@ -57,6 +67,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/application': {
+      id: '/api/application'
+      path: '/api/application'
+      fullPath: '/api/application'
+      preLoaderRoute: typeof ApiApplicationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.netlify/functions/app/$': {
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiApplicationRoute: ApiApplicationRoute,
   DotnetlifyFunctionsAppSplatRoute: DotnetlifyFunctionsAppSplatRoute,
 }
 export const routeTree = rootRouteImport

@@ -6,12 +6,12 @@
   <title>School dashboard — Em-Desh English Medium Private School</title>
   <meta name="description" content="School office dashboard for learner registrations, admission applications, learner records and the school gallery.">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#123f27">
+  <meta name="theme-color" content="#0f2a5c">
   <link rel="icon" type="image/jpeg" href="assets/emdesh-logo.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261124k">
+  <link rel="stylesheet" href="styles.css?v=20261125f">
 </head>
 <body class="app-page dashboard-page">
 
@@ -34,7 +34,6 @@
           <li><a href="index.html">Website</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="apply.html">Apply</a></li>
-          <li><a href="portal.html">Learner portal</a></li>
         </ul>
       </nav>
 
@@ -95,8 +94,8 @@
         <header class="dash-head">
           <div>
             <p class="eyebrow">School office</p>
-            <h1 id="dashboard-title" tabindex="-1">Learner dashboard</h1>
-            <p class="dash-sub">Register learners, review admission applications, and publish school photos.</p>
+            <h1 id="dashboard-title" tabindex="-1">Staff dashboard</h1>
+            <p class="dash-sub">Update the landing page and publish school photos.</p>
           </div>
           <div class="dash-actions">
             <a class="btn btn-ghost" href="gallery.html">View public gallery</a>
@@ -105,15 +104,15 @@
         </header>
 
         <div class="stat-grid">
-          <article class="stat-card">
+          <article class="stat-card" hidden>
             <span class="stat-value" id="stat-total">—</span>
             <span class="stat-label">Registered learners</span>
           </article>
-          <article class="stat-card">
+          <article class="stat-card" hidden>
             <span class="stat-value" id="stat-active">—</span>
             <span class="stat-label">Active learners</span>
           </article>
-          <article class="stat-card">
+          <article class="stat-card" hidden>
             <span class="stat-value" id="stat-applications">—</span>
             <span class="stat-label">New applications</span>
           </article>
@@ -124,13 +123,13 @@
         </div>
 
         <div class="tabs" role="tablist" aria-label="Dashboard sections">
-          <button class="tab" type="button" role="tab" id="tab-btn-learners" aria-selected="true" aria-controls="tab-learners">Learners</button>
-          <button class="tab" type="button" role="tab" id="tab-btn-applications" aria-selected="false" aria-controls="tab-applications" tabindex="-1">Applications</button>
-          <button class="tab" type="button" role="tab" id="tab-btn-homepage" aria-selected="false" aria-controls="tab-homepage" tabindex="-1">Homepage</button>
+          <button class="tab" type="button" role="tab" id="tab-btn-learners" aria-controls="tab-learners" hidden>Learners</button>
+          <button class="tab" type="button" role="tab" id="tab-btn-applications" aria-controls="tab-applications" hidden>Applications</button>
+          <button class="tab" type="button" role="tab" id="tab-btn-homepage" aria-selected="true" aria-controls="tab-homepage">Homepage</button>
           <button class="tab" type="button" role="tab" id="tab-btn-gallery" aria-selected="false" aria-controls="tab-gallery" tabindex="-1">Gallery</button>
         </div>
 
-        <section class="panel" id="tab-learners" role="tabpanel" aria-labelledby="tab-btn-learners">
+        <section class="panel" id="tab-learners" role="tabpanel" aria-labelledby="tab-btn-learners" hidden>
           <header class="panel-head">
             <div>
               <h2>Registered learners</h2>
@@ -184,7 +183,7 @@
           </div>
         </section>
 
-        <section class="panel" id="tab-homepage" role="tabpanel" aria-labelledby="tab-btn-homepage" hidden>
+        <section class="panel" id="tab-homepage" role="tabpanel" aria-labelledby="tab-btn-homepage">
           <header class="panel-head">
             <div>
               <h2>Homepage updates</h2>
@@ -229,7 +228,7 @@
 
           <div class="homepage-help">
             <h3>Homepage photo placements</h3>
-            <p>Use the Gallery tab to upload an image. Choose <strong>Hero image</strong> to replace the landing-page image, or <strong>Recent event</strong> to add it to the switchable news containers. Existing gallery photos remain on the public gallery page.</p>
+            <p>Use the Gallery tab to upload an image. Choose <strong>Landing page background image</strong> to set the picture behind the welcome text at the top of the landing page, or <strong>Recent event</strong> to add it to the switchable news containers. Existing gallery photos remain on the public gallery page.</p>
           </div>
         </section>
 
@@ -270,7 +269,7 @@
                 <select class="input" id="photo-placement">
                   <option value="gallery">Public gallery only</option>
                   <option value="news">Recent event on homepage</option>
-                  <option value="hero">Homepage hero image</option>
+                  <option value="hero">Landing page background image</option>
                 </select>
               </div>
 
@@ -570,7 +569,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-  <script src="app.js?v=20261125a" defer></script>
-  <script type="module" src="admin.js?v=20261125a"></script>
+  <script src="app.js?v=20261125f" defer></script>
+  <script type="module" src="admin.js?v=20261125f"></script>
 </body>
 </html>

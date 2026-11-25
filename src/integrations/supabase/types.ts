@@ -344,6 +344,36 @@ export type Database = {
           },
         ]
       }
+      school_application_forms: {
+        Row: {
+          child_name: string
+          created_at: string
+          details: Json
+          form_type: string
+          id: string
+          photo_path: string | null
+          wants_hostel: boolean
+        }
+        Insert: {
+          child_name: string
+          created_at?: string
+          details?: Json
+          form_type: string
+          id?: string
+          photo_path?: string | null
+          wants_hostel?: boolean
+        }
+        Update: {
+          child_name?: string
+          created_at?: string
+          details?: Json
+          form_type?: string
+          id?: string
+          photo_path?: string | null
+          wants_hostel?: boolean
+        }
+        Relationships: []
+      }
       school_applications: {
         Row: {
           created_at: string
