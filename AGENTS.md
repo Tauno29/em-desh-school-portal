@@ -39,3 +39,4 @@ use the editor.
 - Hero background: gallery image with homepage_role 'hero' becomes the .hero background (app.js).
 - Palette is white and blue.
 - External homepage/gallery reads use an allowlisted, credential-free public content adapter and Netlify same-origin proxy redirects to the stable Lovable production host; private storage signing stays on Cloud because managed service credentials cannot be exported to Netlify.
+- Public homepage/gallery responses replace signed storage links with stable /school-api/media/<path> links (homepage/ and gallery/ prefixes only) and send cache headers. Why: lets Netlify and browsers cache the video and photos.
