@@ -29,9 +29,9 @@ use the editor.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
 
-## Em-Desh school app
-- Pages ported from the original repo live in src/views/ (ts-nocheck) and call `trpc.*` from src/lib/trpc.ts, a shim over one server fn (src/lib/rpc.functions.ts → rpc.server.ts dispatch table). Why: keeps the original UI verbatim; add new actions to the dispatch table.
-- All school tables are service-role only (RLS on, no client policies); every read/write goes through rpc.server.ts, which checks admin role (Cloud auth bearer + user_roles) or the learner cookie session. Why: learners/parents sign in without Cloud accounts.
-- Learner login = Student ID + 4-digit PIN, SHA-256 hashed exactly like the original so imported hashes keep working; session via useSession with SESSION_SECRET.
-- First administrator is created from /admin when no admin exists; public sign-up is disabled. Why: no hardcoded admin credentials.
-- Gallery bucket is private (workspace blocks public buckets); images are stored with 10-year signed links.
+## Em-Desh school site (imported from Tauno29/em-desh-private-school-to-be-sold-)
+- Frontend is the original static HTML/JS/CSS in public/, kept verbatim; src/routes/index.tsx serves public/index.html at /. Why: faithful import, no React rewrite.
+- API is the original src/school/routes.mjs (Web Request→Response), mounted at /.netlify/functions/app/* (the path the frontend JS calls) via src/school/runtime.server.ts, which injects the Cloud service client as `db` and the private `gallery` bucket as `storage`.
+- Tables carry a school_ prefix (runtime maps bare names); RLS on, service-role only. Older non-prefixed tables are deprecated leftovers of a wrong import.
+- Staff sign in with the ADMIN_CODE secret; learners with Student ID + 6-digit PIN (PBKDF2). Cookies patched to SameSite=None so the preview iframe keeps sessions.
+- Optional WEB3FORMS_ACCESS_KEY emails new applications.

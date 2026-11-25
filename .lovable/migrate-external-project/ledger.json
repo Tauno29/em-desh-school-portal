@@ -1,10 +1,8 @@
 [
- {"capability":"public pages","source":"client/src/pages","outcome":"migrate","status":"verified","next_action":""},
- {"capability":"schema","source":"drizzle/schema.ts","outcome":"migrate","status":"verified","next_action":""},
- {"capability":"records","source":"Supabase Postgres","outcome":"migrate","status":"pending","next_action":"user exports tables as CSV"},
- {"capability":"admin auth","source":"env email/password","outcome":"Cloud auth + admin role, first-run setup","status":"implemented","next_action":"user creates admin account"},
- {"capability":"learner portal","source":"studentId+PIN cookie","outcome":"migrate","status":"verified","next_action":""},
- {"capability":"gallery uploads","source":"Supabase storage","outcome":"Cloud private bucket + signed links","status":"implemented","next_action":"old image files need re-upload"},
- {"capability":"admissions email","source":"EmailJS","outcome":"preserve","status":"blocked","next_action":"recipient address + EmailJS keys"},
- {"capability":"parent accounts/class-list import/AI chat","source":"server only, no UI","outcome":"not ported (unused)","status":"accepted","next_action":""}
+ {"capability":"public pages","source":"index/gallery/apply/portal/admin.html","outcome":"migrate verbatim","status":"verified","next_action":""},
+ {"capability":"API + schema","source":"functions/routes.mjs, supabase/schema.sql","outcome":"Cloud database","status":"verified","next_action":""},
+ {"capability":"staff login","source":"ADMIN_CODE","outcome":"preserve","status":"pending","next_action":"user sets ADMIN_CODE"},
+ {"capability":"records","source":"old Supabase/MySQL","outcome":"migrate","status":"pending","next_action":"user exports CSVs"},
+ {"capability":"media uploads","source":"storage_objects table","outcome":"Cloud private bucket","status":"implemented","next_action":"re-upload old photos/videos"},
+ {"capability":"application emails","source":"Web3Forms","outcome":"preserve","status":"optional","next_action":"WEB3FORMS_ACCESS_KEY"}
 ]
