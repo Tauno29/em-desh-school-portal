@@ -344,6 +344,90 @@ export type Database = {
           },
         ]
       }
+      school_applications: {
+        Row: {
+          created_at: string
+          father_name: string
+          father_occupation: string
+          father_phone: string
+          first_name: string
+          grade: string
+          guardian_email: string
+          guardian_name: string
+          guardian_phone: string
+          id: string
+          last_name: string
+          message: string
+          mother_name: string
+          mother_occupation: string
+          mother_phone: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          father_name?: string
+          father_occupation?: string
+          father_phone?: string
+          first_name: string
+          grade: string
+          guardian_email?: string
+          guardian_name: string
+          guardian_phone?: string
+          id?: string
+          last_name: string
+          message: string
+          mother_name?: string
+          mother_occupation?: string
+          mother_phone?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          father_name?: string
+          father_occupation?: string
+          father_phone?: string
+          first_name?: string
+          grade?: string
+          guardian_email?: string
+          guardian_name?: string
+          guardian_phone?: string
+          id?: string
+          last_name?: string
+          message?: string
+          mother_name?: string
+          mother_occupation?: string
+          mother_phone?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      school_behavior_records: {
+        Row: {
+          created_at: string
+          id: string
+          learner_id: string
+          note: string
+          recorded_on: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          learner_id: string
+          note: string
+          recorded_on: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          learner_id?: string
+          note?: string
+          recorded_on?: string
+        }
+        Relationships: []
+      }
       school_contact_info: {
         Row: {
           email: string
@@ -377,6 +461,216 @@ export type Database = {
           registrationNumber?: string
           updatedAt?: string
           whatsapp?: string
+        }
+        Relationships: []
+      }
+      school_gallery_images: {
+        Row: {
+          caption: string
+          content_type: string
+          created_at: string
+          homepage_order: number
+          homepage_role: string
+          id: string
+          object_path: string
+          size_bytes: number
+          status: string
+        }
+        Insert: {
+          caption?: string
+          content_type: string
+          created_at?: string
+          homepage_order?: number
+          homepage_role?: string
+          id?: string
+          object_path: string
+          size_bytes: number
+          status?: string
+        }
+        Update: {
+          caption?: string
+          content_type?: string
+          created_at?: string
+          homepage_order?: number
+          homepage_role?: string
+          id?: string
+          object_path?: string
+          size_bytes?: number
+          status?: string
+        }
+        Relationships: []
+      }
+      school_learners: {
+        Row: {
+          class_name: string
+          created_at: string
+          first_name: string
+          grade: string
+          guardian_name: string
+          guardian_phone: string
+          id: string
+          last_name: string
+          pin_hash: string
+          status: string
+          student_id: string
+          updated_at: string
+        }
+        Insert: {
+          class_name?: string
+          created_at?: string
+          first_name: string
+          grade: string
+          guardian_name: string
+          guardian_phone?: string
+          id?: string
+          last_name: string
+          pin_hash: string
+          status?: string
+          student_id: string
+          updated_at?: string
+        }
+        Update: {
+          class_name?: string
+          created_at?: string
+          first_name?: string
+          grade?: string
+          guardian_name?: string
+          guardian_phone?: string
+          id?: string
+          last_name?: string
+          pin_hash?: string
+          status?: string
+          student_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      school_login_throttle: {
+        Row: {
+          failed_attempts: number
+          locked_until: string
+          throttle_key: string
+          updated_at: string
+        }
+        Insert: {
+          failed_attempts: number
+          locked_until: string
+          throttle_key: string
+          updated_at?: string
+        }
+        Update: {
+          failed_attempts?: number
+          locked_until?: string
+          throttle_key?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      school_report_cards: {
+        Row: {
+          content_type: string
+          created_at: string
+          file_name: string
+          id: string
+          learner_id: string
+          object_path: string
+          size_bytes: number
+          status: string
+          term: string
+        }
+        Insert: {
+          content_type: string
+          created_at?: string
+          file_name: string
+          id?: string
+          learner_id: string
+          object_path: string
+          size_bytes: number
+          status?: string
+          term?: string
+        }
+        Update: {
+          content_type?: string
+          created_at?: string
+          file_name?: string
+          id?: string
+          learner_id?: string
+          object_path?: string
+          size_bytes?: number
+          status?: string
+          term?: string
+        }
+        Relationships: []
+      }
+      school_sessions: {
+        Row: {
+          created_at: string
+          expires_at: string
+          learner_id: string | null
+          role: string
+          token_hash: string
+        }
+        Insert: {
+          created_at?: string
+          expires_at: string
+          learner_id?: string | null
+          role: string
+          token_hash: string
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string
+          learner_id?: string | null
+          role?: string
+          token_hash?: string
+        }
+        Relationships: []
+      }
+      school_site_settings: {
+        Row: {
+          setting_key: string
+          setting_value: string
+          updated_at: string
+        }
+        Insert: {
+          setting_key: string
+          setting_value: string
+          updated_at?: string
+        }
+        Update: {
+          setting_key?: string
+          setting_value?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      school_test_results: {
+        Row: {
+          created_at: string
+          id: string
+          learner_id: string
+          recorded_on: string
+          score: number
+          subject: string
+          term: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          learner_id: string
+          recorded_on: string
+          score: number
+          subject: string
+          term?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          learner_id?: string
+          recorded_on?: string
+          score?: number
+          subject?: string
+          term?: string
         }
         Relationships: []
       }

@@ -8,6 +8,13 @@
       "when": 1795625960995,
       "tag": "0000_school_schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795626841872,
+      "tag": "0001_add_correct_school_schema",
+      "breakpoints": true
     }
   ]
 }
