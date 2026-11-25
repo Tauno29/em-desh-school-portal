@@ -69,7 +69,7 @@
         homepageWelcomeVideo.load();
       }
       const allImages = Array.isArray(data.news) ? data.news : [];
-      const heroImage = allImages.find((item) => item.role === 'hero');
+      const heroImage = data.hero ?? allImages.find((item) => item.role === 'hero');
       const heroSection = document.querySelector('.hero');
       if (heroImage?.url && heroSection) {
         heroSection.style.setProperty('--hero-bg-image', `url("${heroImage.url.replace(/"/g, '%22')}")`);
