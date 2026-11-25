@@ -38,3 +38,4 @@ use the editor.
 - Applications: public/apply.html (3 forms + optional hostel section, passport photo) posts to src/routes/api/application.ts, which stores a copy in school_application_forms + photo in gallery/applications/, then the browser forwards to Web3Forms (WEB3FORMS_ACCESS_KEY, inbox emdesh2019@gmail.com). Why: owner has no own domain; Web3Forms free tier is browser-side.
 - Hero background: gallery image with homepage_role 'hero' becomes the .hero background (app.js).
 - Palette is white and blue.
+- External homepage/gallery reads use an allowlisted, credential-free public content adapter and Netlify same-origin proxy redirects to the stable Lovable production host; private storage signing stays on Cloud because managed service credentials cannot be exported to Netlify.

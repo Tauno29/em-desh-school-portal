@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiApplicationRouteImport } from './routes/api/application'
+import { Route as SchoolApiSplatRouteImport } from './routes/school-api/$'
 import { Route as DotnetlifyFunctionsAppSplatRouteImport } from './routes/[.]netlify/functions/app/$'
+import { Route as ApiPublicSchoolSplatRouteImport } from './routes/api/public/school/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,41 +25,75 @@ const ApiApplicationRoute = ApiApplicationRouteImport.update({
   path: '/api/application',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SchoolApiSplatRoute = SchoolApiSplatRouteImport.update({
+  id: '/school-api/$',
+  path: '/school-api/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DotnetlifyFunctionsAppSplatRoute =
   DotnetlifyFunctionsAppSplatRouteImport.update({
     id: '/.netlify/functions/app/$',
     path: '/.netlify/functions/app/$',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicSchoolSplatRoute = ApiPublicSchoolSplatRouteImport.update({
+  id: '/api/public/school/$',
+  path: '/api/public/school/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/application': typeof ApiApplicationRoute
+  '/school-api/$': typeof SchoolApiSplatRoute
   '/.netlify/functions/app/$': typeof DotnetlifyFunctionsAppSplatRoute
+  '/api/public/school/$': typeof ApiPublicSchoolSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/application': typeof ApiApplicationRoute
+  '/school-api/$': typeof SchoolApiSplatRoute
   '/.netlify/functions/app/$': typeof DotnetlifyFunctionsAppSplatRoute
+  '/api/public/school/$': typeof ApiPublicSchoolSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/application': typeof ApiApplicationRoute
+  '/school-api/$': typeof SchoolApiSplatRoute
   '/.netlify/functions/app/$': typeof DotnetlifyFunctionsAppSplatRoute
+  '/api/public/school/$': typeof ApiPublicSchoolSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/application' | '/.netlify/functions/app/$'
+  fullPaths:
+    | '/'
+    | '/api/application'
+    | '/school-api/$'
+    | '/.netlify/functions/app/$'
+    | '/api/public/school/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/application' | '/.netlify/functions/app/$'
-  id: '__root__' | '/' | '/api/application' | '/.netlify/functions/app/$'
+  to:
+    | '/'
+    | '/api/application'
+    | '/school-api/$'
+    | '/.netlify/functions/app/$'
+    | '/api/public/school/$'
+  id:
+    | '__root__'
+    | '/'
+    | '/api/application'
+    | '/school-api/$'
+    | '/.netlify/functions/app/$'
+    | '/api/public/school/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiApplicationRoute: typeof ApiApplicationRoute
+  SchoolApiSplatRoute: typeof SchoolApiSplatRoute
   DotnetlifyFunctionsAppSplatRoute: typeof DotnetlifyFunctionsAppSplatRoute
+  ApiPublicSchoolSplatRoute: typeof ApiPublicSchoolSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -76,11 +112,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiApplicationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/school-api/$': {
+      id: '/school-api/$'
+      path: '/school-api/$'
+      fullPath: '/school-api/$'
+      preLoaderRoute: typeof SchoolApiSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.netlify/functions/app/$': {
       id: '/.netlify/functions/app/$'
       path: '/.netlify/functions/app/$'
       fullPath: '/.netlify/functions/app/$'
       preLoaderRoute: typeof DotnetlifyFunctionsAppSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/school/$': {
+      id: '/api/public/school/$'
+      path: '/api/public/school/$'
+      fullPath: '/api/public/school/$'
+      preLoaderRoute: typeof ApiPublicSchoolSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -89,7 +139,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiApplicationRoute: ApiApplicationRoute,
+  SchoolApiSplatRoute: SchoolApiSplatRoute,
   DotnetlifyFunctionsAppSplatRoute: DotnetlifyFunctionsAppSplatRoute,
+  ApiPublicSchoolSplatRoute: ApiPublicSchoolSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

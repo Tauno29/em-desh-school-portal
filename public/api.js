@@ -30,7 +30,7 @@ export async function api(path, { method = 'GET', body } = {}) {
     init.body = JSON.stringify(body);
   }
   let response;
-  const url = authToken
+  const url = method === 'GET' && path === '/api/gallery' ? '/school-api/gallery' : authToken
     ? `${BASE}${path}${path.includes('?') ? '&' : '?'}s=${encodeURIComponent(authToken)}`
     : BASE + path;
   try {

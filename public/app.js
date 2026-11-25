@@ -90,7 +90,7 @@
 
   async function loadHomepage() {
     try {
-      const response = await fetch('/.netlify/functions/app/api/homepage', { headers: { accept: 'application/json' } });
+      const response = await fetch('/school-api/homepage', { headers: { accept: 'application/json' } });
       if (!response.ok) return;
       const data = await response.json();
       const settings = data.settings ?? {};
