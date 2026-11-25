@@ -33,5 +33,8 @@ use the editor.
 - Frontend is the original static HTML/JS/CSS in public/, kept verbatim; src/routes/index.tsx serves public/index.html at /. Why: faithful import, no React rewrite.
 - API is the original src/school/routes.mjs (Web Request→Response), mounted at /.netlify/functions/app/* (the path the frontend JS calls) via src/school/runtime.server.ts, which injects the Cloud service client as `db` and the private `gallery` bucket as `storage`.
 - Tables carry a school_ prefix (runtime maps bare names); RLS on, service-role only. Older non-prefixed tables are deprecated leftovers of a wrong import.
-- Staff sign in with the ADMIN_CODE secret; learners with Student ID + 6-digit PIN (PBKDF2). Cookies patched to SameSite=None so the preview iframe keeps sessions.
-- Optional WEB3FORMS_ACCESS_KEY emails new applications.
+- Staff sign in with the ADMIN_CODE secret. Cookies patched to SameSite=None so the preview iframe keeps sessions.
+- Learner portal and staff Learners/Applications tabs are retired (portal + /api/apply endpoints return 404; admin tabs hidden, JS kept). Why: owner wants applications by email only.
+- Applications: public/apply.html (3 forms + optional hostel section, passport photo) posts to src/routes/api/application.ts, which stores a copy in school_application_forms + photo in gallery/applications/, then the browser forwards to Web3Forms (WEB3FORMS_ACCESS_KEY, inbox emdesh2019@gmail.com). Why: owner has no own domain; Web3Forms free tier is browser-side.
+- Hero background: gallery image with homepage_role 'hero' becomes the .hero background (app.js).
+- Palette is white and blue.
