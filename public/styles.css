@@ -3446,3 +3446,4 @@ select.input {
 .hero-sound-btn.show { opacity: 1; transform: translate(-50%,-50%) scale(1); }
 
 .hero-mute-btn { position: absolute; right: 16px; bottom: 16px; z-index: 3; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(10,30,70,.65); color: #fff; font-size: 20px; cursor: pointer; }
+@media (max-width:480px){.fee-table td{white-space:normal}.fee-table th,.fee-table td{font-size:.92rem}}

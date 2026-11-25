@@ -30,7 +30,7 @@ export async function api(path, { method = 'GET', body } = {}) {
     init.body = JSON.stringify(body);
   }
   let response;
-  const url = method === 'GET' && path === '/api/gallery' ? '/school-api/gallery' : authToken
+  const url = method === 'GET' && path === '/api/gallery' ? ((/lovable\.app$|localhost/.test(location.hostname) ? '/school-api' : 'https://project--cf4a80e7-8301-450b-b19f-d5fb82508f21.lovable.app/api/public/school') + '/gallery') : authToken
     ? `${BASE}${path}${path.includes('?') ? '&' : '?'}s=${encodeURIComponent(authToken)}`
     : BASE + path;
   try {

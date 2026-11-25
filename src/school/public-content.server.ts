@@ -27,6 +27,7 @@ export async function handlePublicSchoolContent(request: Request, splat: string)
   return new Response(stabilizeMediaUrls(await res.text()), {
     headers: {
       "content-type": "application/json",
+      "access-control-allow-origin": "*",
       "cache-control": "public, max-age=60, stale-while-revalidate=300",
       "netlify-cdn-cache-control": "public, s-maxage=120, stale-while-revalidate=600",
     },

@@ -90,7 +90,7 @@
 
   async function loadHomepage() {
     try {
-      const response = await fetch('/school-api/homepage', { headers: { accept: 'application/json' } });
+      const response = await fetch((/lovable\.app$|localhost/.test(location.hostname) ? '/school-api' : 'https://project--cf4a80e7-8301-450b-b19f-d5fb82508f21.lovable.app/api/public/school') + '/homepage', { headers: { accept: 'application/json' } });
       if (!response.ok) return;
       const data = await response.json();
       const settings = data.settings ?? {};
