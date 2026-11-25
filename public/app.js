@@ -22,6 +22,38 @@
   const homepageNewsPrev = document.getElementById('homepage-news-prev');
   const homepageNewsNext = document.getElementById('homepage-news-next');
 
+  let welcomeStarted = false;
+  function startWelcomeVideo(url) {
+    const v = homepageWelcomeVideo;
+    if (!v || welcomeStarted) return;
+    welcomeStarted = true;
+    const btn = document.getElementById('hero-sound-btn');
+    const showIcon = () => {
+      if (!btn) return;
+      btn.textContent = v.muted ? '🔇' : '🔊';
+      btn.classList.add('show');
+      clearTimeout(btn._t);
+      btn._t = setTimeout(() => btn.classList.remove('show'), 900);
+    };
+    v.src = url;
+    v.muted = false;
+    v.play().catch(() => {
+      // Browser blocked sound before any interaction: play muted, unmute on first interaction.
+      v.muted = true;
+      v.play().catch(() => {});
+      const unlock = (e) => {
+        if (e.target && e.target.closest && e.target.closest('.hero-video-wrap')) return;
+        v.muted = false; v.play().catch(() => {}); showIcon();
+        ['pointerdown','keydown','touchstart','scroll'].forEach((t) => window.removeEventListener(t, unlock, true));
+      };
+      ['pointerdown','keydown','touchstart','scroll'].forEach((t) => window.addEventListener(t, unlock, true));
+    });
+    const toggleSound = () => { v.muted = !v.muted; if (v.paused) v.play().catch(() => {}); showIcon(); };
+    v.addEventListener('click', toggleSound);
+    if (btn) btn.addEventListener('click', toggleSound);
+  }
+  if (homepageWelcomeVideo) setTimeout(() => { if (!welcomeStarted) startWelcomeVideo('assets/hero-video.mp4'); }, 2500);
+
   let newsItems = [];
   let newsIndex = 0;
 
@@ -64,10 +96,7 @@
         }
         homepageNotice.hidden = false;
       }
-      if (data.welcomeVideo?.url) {
-        homepageWelcomeVideo.src = data.welcomeVideo.url;
-        homepageWelcomeVideo.load();
-      }
+      startWelcomeVideo(data.welcomeVideo?.url || 'assets/hero-video.mp4');
       const allImages = Array.isArray(data.news) ? data.news : [];
       const heroImage = data.hero ?? allImages.find((item) => item.role === 'hero');
       const heroSection = document.querySelector('.hero');

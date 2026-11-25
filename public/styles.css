@@ -3439,3 +3439,8 @@ select.input {
 .highlights{list-style:none;padding:0;margin:2rem 0 0;display:grid;gap:.6rem 1.5rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr))}
 .highlights li{padding-left:1.4rem;position:relative}
 .highlights li::before{content:"";position:absolute;left:0;top:.55em;width:.55rem;height:.55rem;border-radius:50%;background:#1d4ed8}
+
+.hero-video-wrap { position: relative; }
+.hero-video-wrap video { cursor: pointer; background: transparent; }
+.hero-sound-btn { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%) scale(.8); width: 72px; height: 72px; border-radius: 50%; border: 0; background: rgba(10,30,70,.55); color: #fff; font-size: 30px; opacity: 0; transition: opacity .25s, transform .25s; pointer-events: none; z-index: 2; }
+.hero-sound-btn.show { opacity: 1; transform: translate(-50%,-50%) scale(1); }
