@@ -498,8 +498,9 @@ export function application({ db, storage, BackendError, env }) {
 
   async function viewableImages(limit) {
     const found = rows(await db.from('gallery_images')
-      .select('id,caption,object_path,created_at,status')
-      .eq('status', 'ready').order('created_at', { ascending: false }).limit(limit));
+      .select('id,caption,object_path,created_at,status,homepage_role')
+      .eq('status', 'ready').or('homepage_role.is.null,homepage_role.eq.gallery')
+      .order('created_at', { ascending: false }).limit(limit));
     const signed = await Promise.allSettled(found.map(async (row) => {
       const result = await storage.createSignedUrl(row.object_path, 3600);
       if (!result?.signedUrl) throw new Error('sign_failed');
