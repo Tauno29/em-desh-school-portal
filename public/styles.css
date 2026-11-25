@@ -620,13 +620,13 @@ strong {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1fr;
   align-items: start;
   gap: calc(clamp(40px, 6vw, 80px) * var(--site-space, 1));
 }
 
 .about-copy > p {
-  max-width: 56ch;
+  max-width: 92ch;
   color: var(--site-muted);
 }
 
