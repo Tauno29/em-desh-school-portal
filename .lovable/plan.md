@@ -10,7 +10,8 @@
 2. **Application form:** send it to the Lovable site's application address, which then saves it and emails emdesh2019@gmail.com as before, passport photo included.
 3. **Staff area:** on Netlify, the Staff link opens the working staff area on the Lovable site, so uploads still appear on both sites.
 4. Publish, push to GitHub, then test the Netlify site in a real browser: homepage video plays, background photo shows, gallery and fees load, and a test application goes through (then delete the test).
-5. Tell you to redeploy Netlify once, only for the parts that need it.
+5. **Speed:** keep the smaller video and photos and browser caching, and time the Netlify homepage before and after in a real browser.
+6. Tell you to redeploy Netlify once, only for the parts that need it.
 
 ## Technical details
 - `stabilizeMediaUrls` (src/school/public-content.ts): output `https://project--cf4a80e7-8301-450b-b19f-d5fb82508f21.lovable.app/api/public/school/media/<path>`; keep the homepage/ and gallery/ allowlist; add a HEAD handler. Netlify's 500 most likely comes from its own server build running the route without Cloud credentials. Remove the `/school-api/media/*` redirect and update the test.
