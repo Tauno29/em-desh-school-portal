@@ -43,14 +43,21 @@
       v.play().catch(() => {});
       const unlock = (e) => {
         if (e.target && e.target.closest && e.target.closest('.hero-video-wrap')) return;
-        v.muted = false; v.play().catch(() => {}); showIcon();
+        v.muted = false; v.play().catch(() => {});
         ['pointerdown','keydown','touchstart','scroll'].forEach((t) => window.removeEventListener(t, unlock, true));
       };
       ['pointerdown','keydown','touchstart','scroll'].forEach((t) => window.addEventListener(t, unlock, true));
     });
-    const toggleSound = () => { v.muted = !v.muted; if (v.paused) v.play().catch(() => {}); showIcon(); };
-    v.addEventListener('click', toggleSound);
-    if (btn) btn.addEventListener('click', toggleSound);
+    const muteBtn = document.getElementById('hero-mute-btn');
+    const syncMute = () => { if (muteBtn) { muteBtn.textContent = v.muted ? '🔇' : '🔊'; muteBtn.setAttribute('aria-label', v.muted ? 'Unmute video' : 'Mute video'); } };
+    v.addEventListener('volumechange', syncMute); syncMute();
+    if (muteBtn) muteBtn.addEventListener('click', (e) => { e.stopPropagation(); v.muted = !v.muted; syncMute(); });
+    const togglePlay = () => {
+      if (v.paused) { v.play().catch(() => {}); if (btn) btn.textContent = '▶'; }
+      else { v.pause(); if (btn) btn.textContent = '❚❚'; }
+      if (btn) { btn.classList.add('show'); clearTimeout(btn._t); btn._t = setTimeout(() => btn.classList.remove('show'), 900); }
+    };
+    v.addEventListener('click', togglePlay);
   }
   if (homepageWelcomeVideo) setTimeout(() => { if (!welcomeStarted) startWelcomeVideo('assets/hero-video.mp4'); }, 2500);
 

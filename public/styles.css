@@ -3444,3 +3444,5 @@ select.input {
 .hero-video-wrap video { cursor: pointer; background: transparent; }
 .hero-sound-btn { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%) scale(.8); width: 72px; height: 72px; border-radius: 50%; border: 0; background: rgba(10,30,70,.55); color: #fff; font-size: 30px; opacity: 0; transition: opacity .25s, transform .25s; pointer-events: none; z-index: 2; }
 .hero-sound-btn.show { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+
+.hero-mute-btn { position: absolute; right: 16px; bottom: 16px; z-index: 3; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(10,30,70,.65); color: #fff; font-size: 20px; cursor: pointer; }
