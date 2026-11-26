@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 // Application form endpoint for the Netlify copy of the site (cross-origin).
 const ALLOWED = new Set(["https://emdeshprivateschool.netlify.app", "https://emdesh-english-medium-private-school.lovable.app", "https://emdesh-english-medium-private-schoo.vercel.app"]);
 const cors = (origin: string | null): Record<string, string> =>
-  origin && ALLOWED.has(origin)
+  origin && (ALLOWED.has(origin) || /^https:\/\/[a-z0-9-]+\.(vercel|netlify|lovable)\.app$/.test(origin))
     ? { "access-control-allow-origin": origin, "access-control-allow-methods": "POST, OPTIONS", "access-control-allow-headers": "content-type", vary: "Origin" }
     : {};
 
